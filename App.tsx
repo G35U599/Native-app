@@ -3,16 +3,18 @@ import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
-  const [counter, setCounter] = useState(0)
+  const [counter, setCounter] = useState(0);
   return (
     <View style={styles.container}>
-      <Text >{counter}</Text>
-      <Pressable style={styles.button} onPress={() => setCounter(counter + 1)}>
-        <Text>Increment</Text>
-      </Pressable>
-      <Pressable style={styles.button} onPress={() => setCounter(counter - 1)}>
-        <Text>Decrement</Text>
-      </Pressable>
+      <Text style={{ fontSize: 120 }} >{counter}</Text>
+      <View style={{ flexDirection: 'row' }}>
+        <Pressable style={styles.button} onPress={() => setCounter(counter + 1)}>
+          <Text>+1</Text>
+        </Pressable>
+        <Pressable style={styles.button} onPress={() => setCounter(counter - 1)}>
+          <Text>-1</Text>
+        </Pressable>
+      </View>
       <StatusBar style="auto" />
     </View>
   );
@@ -24,6 +26,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    fontSize: 120,
   },
   button: {
     margin: 10,
