@@ -1,23 +1,30 @@
 import { StatusBar } from 'expo-status-bar';
 import { useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
+import FAB from './src/components/FAB';
 
 export default function App() {
   const [counter, setCounter] = useState(0);
+  const handleIncrease = () => {
+    console.log('Botón +1 presionado');
+    setCounter(counter + 1);
+  };
+
+  const handleDecrease = () => {
+    console.log('Botón -1 presionado');
+    setCounter(counter - 1);
+  };
   return (
     <View style={styles.container}>
       <Text style={{ fontSize: 120 }} >{counter}</Text>
       <View style={{ flexDirection: 'row' }}>
-        <Pressable style={styles.button} onPress={() => setCounter(counter + 1)}>
-          <Text>+1</Text>
-        </Pressable>
-        <Pressable style={styles.button} onPress={() => setCounter(counter - 1)}>
-          <Text>-1</Text>
-        </Pressable>
+        <FAB handleIncrease={handleIncrease} handleDecrease={handleDecrease} setCounter={setCounter} />
       </View>
       <StatusBar style="auto" />
     </View>
   );
+
+
 }
 
 const styles = StyleSheet.create({
@@ -28,10 +35,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     fontSize: 120,
   },
-  button: {
-    margin: 10,
-    padding: 10,
-    backgroundColor: '#ddd',
-    borderRadius: 5,
-  },
+
 });
